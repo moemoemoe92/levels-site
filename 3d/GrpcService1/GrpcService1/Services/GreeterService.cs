@@ -27,23 +27,17 @@ public class GreeterService : Greeter.GreeterBase
         var apiKey = _configuration["Anthropic:ApiKey"];
         var client = new AnthropicClient(apiKey);
 
-        var messageRequest = new MessageRequest
+        var messageRequest = new CreateMessageRequest
         {
-            Model = "claude-opus-4-1-20250805",
-            MaxTokens = 1,
-            Temperature = 1,
-            Messages = new List<Message>
+            Model = "claude-3-5-sonnet-20241022",
+            MaxTokens = 1024,
+            Messages = new List<AnthropicMessage>
             {
-                new Message { Role = "user", Content = request.Prompt }
-            },
-            Thinking = new Thinking
-            {
-                Type = "enabled",
-                BudgetTokens = 21545
+                new AnthropicMessage { Role = "user", Content = request.Prompt }
             }
         };
 
-        var response = await client.Messages.CreateMessageAsync(messageRequest);
+        var response = await client.Messages.CreateAsync(messageRequest);
 
         return new ClaudeReply
         {
