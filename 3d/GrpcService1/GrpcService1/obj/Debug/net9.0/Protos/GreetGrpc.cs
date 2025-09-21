@@ -52,6 +52,10 @@ namespace GrpcService1 {
     static readonly grpc::Marshaller<global::GrpcService1.HelloRequest> __Marshaller_greet_HelloRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcService1.HelloRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::GrpcService1.HelloReply> __Marshaller_greet_HelloReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcService1.HelloReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GrpcService1.ClaudeRequest> __Marshaller_greet_ClaudeRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcService1.ClaudeRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GrpcService1.ClaudeReply> __Marshaller_greet_ClaudeReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcService1.ClaudeReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::GrpcService1.HelloRequest, global::GrpcService1.HelloReply> __Method_SayHello = new grpc::Method<global::GrpcService1.HelloRequest, global::GrpcService1.HelloReply>(
@@ -60,6 +64,14 @@ namespace GrpcService1 {
         "SayHello",
         __Marshaller_greet_HelloRequest,
         __Marshaller_greet_HelloReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::GrpcService1.ClaudeRequest, global::GrpcService1.ClaudeReply> __Method_GetClaudeResponse = new grpc::Method<global::GrpcService1.ClaudeRequest, global::GrpcService1.ClaudeReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetClaudeResponse",
+        __Marshaller_greet_ClaudeRequest,
+        __Marshaller_greet_ClaudeReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -83,6 +95,18 @@ namespace GrpcService1 {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// Gets a response from Claude
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::GrpcService1.ClaudeReply> GetClaudeResponse(global::GrpcService1.ClaudeRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -91,7 +115,8 @@ namespace GrpcService1 {
     public static grpc::ServerServiceDefinition BindService(GreeterBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_SayHello, serviceImpl.SayHello).Build();
+          .AddMethod(__Method_SayHello, serviceImpl.SayHello)
+          .AddMethod(__Method_GetClaudeResponse, serviceImpl.GetClaudeResponse).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -102,6 +127,7 @@ namespace GrpcService1 {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, GreeterBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_SayHello, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcService1.HelloRequest, global::GrpcService1.HelloReply>(serviceImpl.SayHello));
+      serviceBinder.AddMethod(__Method_GetClaudeResponse, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcService1.ClaudeRequest, global::GrpcService1.ClaudeReply>(serviceImpl.GetClaudeResponse));
     }
 
   }
