@@ -411,8 +411,8 @@
                 <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
                     alt="VR Gaming">
                 <div class="gaming-overlay">
-                    <h3>Virtual Reality Games</h3>
-                    <p>Immersive experience with the latest VR technology</p>
+                    <h3>ألعاب الواقع الافتراضي</h3>
+                    <p>تجربة غامرة مع أحدث تقنيات الواقع الافتراضي</p>
                 </div>
             </div>
         </div>
@@ -420,7 +420,7 @@
 
     <!-- Breakfast Section -->
     <section id="breakfast" class="gaming-zone">
-        <h2 class="section-title" data-aos="fade-up">Breakfast Menu</h2>
+        <h2 class="section-title" data-aos="fade-up">قائمة الإفطار</h2>
         <div class="gaming-grid" id="breakfast-grid">
             <!-- Breakfast items will be dynamically populated -->
         </div>
@@ -428,21 +428,21 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2 class="section-title" data-aos="fade-up">Contact Us</h2>
+        <h2 class="section-title" data-aos="fade-up">اتصل بنا</h2>
         <div class="contact-grid">
             <div class="contact-info" data-aos="fade-up">
                 <i class="fas fa-map-marker-alt"></i>
-                <h3>Our Location</h3>
-                <p>Riyadh, Saudi Arabia</p>
+                <h3>موقعنا</h3>
+                <p>الرياض، المملكة العربية السعودية</p>
             </div>
             <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-clock"></i>
-                <h3>Working Hours</h3>
-                <p>Every day from 7 AM - 12 AM</p>
+                <h3>ساعات العمل</h3>
+                <p>كل يوم من 7 صباحاً - 12 منتصف الليل</p>
             </div>
             <div class="contact-info" data-aos="fade-up" data-aos-delay="400">
                 <i class="fas fa-phone"></i>
-                <h3>Call Us</h3>
+                <h3>اتصل بنا</h3>
                 <p>+966 XX XXX XXXX</p>
             </div>
         </div>
@@ -455,7 +455,7 @@
             <h3 id="modal-name"></h3>
             <p id="modal-calories"></p>
             <p id="modal-price"></p>
-            <button onclick="document.getElementById('item-modal').style.display='none'">Close</button>
+            <button onclick="document.getElementById('item-modal').style.display='none'">إغلاق</button>
         </div>
     </div>
 
@@ -464,8 +464,8 @@
     <script>
         function showItemModal(name, calories, price, image) {
             document.getElementById('modal-name').textContent = name;
-            document.getElementById('modal-calories').textContent = `Calories: ${calories} kcal`;
-            document.getElementById('modal-price').textContent = `Price: ${price} SAR`;
+            document.getElementById('modal-calories').textContent = `السعرات: ${calories} سعرة حرارية`;
+            document.getElementById('modal-price').textContent = `السعر: ${price} ريال`;
             document.getElementById('modal-image').src = image;
             document.getElementById('item-modal').style.display = 'flex';
         }
@@ -478,42 +478,42 @@
         // Menu Data
         const menuData = {
             coffee: [
-                { name: 'Espresso', calories: 5, hotPrice: 12, coldPrice: 'N/A' },
-                { name: 'Americano', calories: 10, hotPrice: 14, coldPrice: 15 },
-                { name: 'Cappuccino', calories: 80, hotPrice: 16, coldPrice: 'N/A' },
-                { name: 'Flat White', calories: 100, hotPrice: 17, coldPrice: 'N/A' },
-                { name: 'Latte', calories: 120, hotPrice: 18, coldPrice: 19 },
-                { name: 'Spanish Latte', calories: 160, hotPrice: 18, coldPrice: 19 },
-                { name: 'Salted Caramel Latte', calories: 190, hotPrice: 19, coldPrice: 20 },
-                { name: 'Vanilla Latte', calories: 180, hotPrice: 19, coldPrice: 20 },
-                { name: 'Mocha', calories: 230, hotPrice: 19, coldPrice: 20 },
-                { name: 'White Mocha', calories: 250, hotPrice: 19, coldPrice: 20 },
-                { name: 'Matcha', calories: 150, hotPrice: 23, coldPrice: 24 },
-                { name: 'Levels Latte (Signature)', calories: 200, hotPrice: 24, coldPrice: 25 },
-                { name: 'Choco Latte', calories: 220, hotPrice: 22, coldPrice: 22 }
+                { name: 'إسبريسو', calories: 5, hotPrice: 12, coldPrice: 'N/A' },
+                { name: 'أمريكانو', calories: 10, hotPrice: 14, coldPrice: 15 },
+                { name: 'كابتشينو', calories: 80, hotPrice: 16, coldPrice: 'N/A' },
+                { name: 'فلات وايت', calories: 100, hotPrice: 17, coldPrice: 'N/A' },
+                { name: 'لاتيه', calories: 120, hotPrice: 18, coldPrice: 19 },
+                { name: 'لاتيه إسباني', calories: 160, hotPrice: 18, coldPrice: 19 },
+                { name: 'لاتيه كراميل ملحي', calories: 190, hotPrice: 19, coldPrice: 20 },
+                { name: 'لاتيه فانيليا', calories: 180, hotPrice: 19, coldPrice: 20 },
+                { name: 'موكا', calories: 230, hotPrice: 19, coldPrice: 20 },
+                { name: 'موكا وايت', calories: 250, hotPrice: 19, coldPrice: 20 },
+                { name: 'ماتشا', calories: 150, hotPrice: 23, coldPrice: 24 },
+                { name: 'لاتيه ليفيلز (توقيع)', calories: 200, hotPrice: 24, coldPrice: 25 },
+                { name: 'لاتيه شوكو', calories: 220, hotPrice: 22, coldPrice: 22 }
             ],
             tea: [
-                { name: 'Red Tea', calories: 0, hotPrice: 5, coldPrice: 'N/A' },
-                { name: 'Green Tea', calories: 0, hotPrice: 5, coldPrice: 'N/A' },
-                { name: 'Green Tea w/ Mint', calories: 5, hotPrice: 5, coldPrice: 'N/A' },
-                { name: 'Chamomile', calories: 0, hotPrice: 7, coldPrice: 'N/A' },
-                { name: 'Hibiscus', calories: 40, hotPrice: 'N/A', coldPrice: 18 }
+                { name: 'شاي أحمر', calories: 0, hotPrice: 5, coldPrice: 'N/A' },
+                { name: 'شاي أخضر', calories: 0, hotPrice: 5, coldPrice: 'N/A' },
+                { name: 'شاي أخضر بالنعناع', calories: 5, hotPrice: 5, coldPrice: 'N/A' },
+                { name: 'كاموميل', calories: 0, hotPrice: 7, coldPrice: 'N/A' },
+                { name: 'هيبيسكوس', calories: 40, hotPrice: 'N/A', coldPrice: 18 }
             ],
             special: [
-                { name: 'V60 (Colombia/Ethiopia/Costa Rica)', calories: 5, hotPrice: 19, coldPrice: 19 },
-                { name: 'Mojito – All Flavors', calories: 120, hotPrice: 'N/A', coldPrice: 18 },
-                { name: 'Lemon Brazilian', calories: 90, hotPrice: 'N/A', coldPrice: 22 },
-                { name: 'Red Bull', calories: 110, hotPrice: 'N/A', coldPrice: 14 },
-                { name: 'Code Red', calories: 90, hotPrice: 'N/A', coldPrice: 7 },
-                { name: 'Sparkling Water', calories: 0, hotPrice: 'N/A', coldPrice: 7 },
-                { name: 'Still Water', calories: 0, hotPrice: 'N/A', coldPrice: 5 }
+                { name: 'V60 (كولومبيا/إثيوبيا/كوستاريكا)', calories: 5, hotPrice: 19, coldPrice: 19 },
+                { name: 'موهيتو – جميع النكهات', calories: 120, hotPrice: 'N/A', coldPrice: 18 },
+                { name: 'ليمون برازيلي', calories: 90, hotPrice: 'N/A', coldPrice: 22 },
+                { name: 'ريد بول', calories: 110, hotPrice: 'N/A', coldPrice: 14 },
+                { name: 'كود ريد', calories: 90, hotPrice: 'N/A', coldPrice: 7 },
+                { name: 'ماء غازي', calories: 0, hotPrice: 'N/A', coldPrice: 7 },
+                { name: 'ماء عادي', calories: 0, hotPrice: 'N/A', coldPrice: 5 }
             ]
         };
 
         const breakfastData = [
-            { name: 'English Breakfast', price: 45, image: 'https://images.unsplash.com/photo-1533920379810-6bedac961c2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' },
-            { name: 'Eggs Benedict', price: 38, image: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' },
-            { name: 'Avocado Toast', price: 32, image: 'https://images.unsplash.com/photo-1588137378633-dea1336ce1e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' }
+            { name: 'إفطار إنجليزي', price: 45, image: 'https://images.unsplash.com/photo-1533920379810-6bedac961c2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' },
+            { name: 'إيجز بينيديكت', price: 38, image: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' },
+            { name: 'توست أفوكادو', price: 32, image: 'https://images.unsplash.com/photo-1588137378633-dea1336ce1e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' }
         ];
 
         // Populate Menu Items
@@ -536,8 +536,8 @@
                 row.addEventListener('click', () => {
                     const placeholderImage = `https://source.unsplash.com/featured/?${encodeURIComponent(item.name)},drink`;
                     const combinedPrice =
-                        `${item.hotPrice !== 'N/A' ? 'Hot: ' + item.hotPrice + ' SAR' : ''} 
-                         ${item.coldPrice !== 'N/A' ? '| Cold: ' + item.coldPrice + ' SAR' : ''}`;
+                        `${item.hotPrice !== 'N/A' ? 'ساخن: ' + item.hotPrice + ' ريال' : ''} 
+                         ${item.coldPrice !== 'N/A' ? '| بارد: ' + item.coldPrice + ' ريال' : ''}`;
                     showItemModal(item.name, item.calories, combinedPrice, placeholderImage);
                 });
 
@@ -559,7 +559,7 @@
                     <img src="${item.image}" alt="${item.name}">
                     <div class="gaming-overlay">
                         <h3>${item.name}</h3>
-                        <p>Price: ${item.price} SAR</p>
+                        <p>السعر: ${item.price} ريال</p>
                     </div>
                 `;
 
