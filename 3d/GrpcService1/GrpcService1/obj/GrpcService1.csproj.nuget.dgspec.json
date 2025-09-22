@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/moe/Documents/GitHub/levels-site/3d/GrpcService1/GrpcService1/GrpcService1.csproj": {}
+    "/Users/moe/Documents/GitHub/levels-site/root/3d/GrpcService1/GrpcService1/GrpcService1.csproj": {}
   },
   "projects": {
-    "/Users/moe/Documents/GitHub/levels-site/3d/GrpcService1/GrpcService1/GrpcService1.csproj": {
+    "/Users/moe/Documents/GitHub/levels-site/root/3d/GrpcService1/GrpcService1/GrpcService1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/moe/Documents/GitHub/levels-site/3d/GrpcService1/GrpcService1/GrpcService1.csproj",
+        "projectUniqueName": "/Users/moe/Documents/GitHub/levels-site/root/3d/GrpcService1/GrpcService1/GrpcService1.csproj",
         "projectName": "GrpcService1",
-        "projectPath": "/Users/moe/Documents/GitHub/levels-site/3d/GrpcService1/GrpcService1/GrpcService1.csproj",
+        "projectPath": "/Users/moe/Documents/GitHub/levels-site/root/3d/GrpcService1/GrpcService1/GrpcService1.csproj",
         "packagesPath": "/Users/moe/.nuget/packages/",
-        "outputPath": "/Users/moe/Documents/GitHub/levels-site/3d/GrpcService1/GrpcService1/obj/",
+        "outputPath": "/Users/moe/Documents/GitHub/levels-site/root/3d/GrpcService1/GrpcService1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/moe/.nuget/NuGet/NuGet.Config"
@@ -44,9 +44,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Anthropic": {
+            "Anthropic.SDK": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[5.5.1, )"
             },
             "Grpc.AspNetCore": {
               "target": "Package",
