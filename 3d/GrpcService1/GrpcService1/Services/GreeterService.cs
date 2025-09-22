@@ -1,6 +1,6 @@
 using Grpc.Core;
 using GrpcService1;
-using Anthropic;
+using Anthropic.SDK;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +17,7 @@ public class GreeterService : Greeter.GreeterBase
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        
+
         var apiKey = _configuration["Anthropic:ApiKey"];
         if (string.IsNullOrEmpty(apiKey))
         {
@@ -35,7 +35,7 @@ public class GreeterService : Greeter.GreeterBase
         }
 
         _logger.LogInformation("Processing SayHello request for {Name}", request.Name);
-        
+
         return Task.FromResult(new HelloReply
         {
             Message = $"Hello {request.Name}"
@@ -74,7 +74,7 @@ public class GreeterService : Greeter.GreeterBase
             }
 
             _logger.LogInformation("Successfully processed Claude request");
-            
+
             return new ClaudeReply
             {
                 Response = response.Content
