@@ -44,9 +44,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Anthropic": {
+            "Anthropic.SDK": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[5.5.1, )"
             },
             "Grpc.AspNetCore": {
               "target": "Package",
