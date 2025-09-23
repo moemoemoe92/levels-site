@@ -8,3 +8,7 @@ obj/
 bin/
 *.cache
 *.pdb
+bin/
+obj/
+*.pdb
+*.cache
