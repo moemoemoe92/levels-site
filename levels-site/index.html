@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقهى ليفيلز - قهوة متخصصة، منطقة ألعاب، وإفطار لذيذ</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .menu-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #000;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .modal-content button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #A27B5C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        :root {
+            --primary: #2C3639;
+            --secondary: #3F4E4F;
+            --accent: #A27B5C;
+            --light: #DCD7C9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            padding: 1rem 5%;
+            background: rgba(44, 54, 57, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 5%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            filter: brightness(0.3);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            transform: translateY(-10%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background: #8B6B4F;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--accent);
+        }
+
+        /* Menu Container */
+        .menu-container {
+            margin-top: 2rem;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .category-btn.active {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .category-btn:hover {
+            background: var(--accent);
+        }
+
+        /* Menu Table */
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+            direction: ltr;
+        }
+
+        .menu-table th,
+        .menu-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .menu-table th {
+            background: var(--accent);
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        .menu-table td {
+            color: var(--light);
+        }
+
+        .menu-table tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gaming Zone */
+        .gaming-zone {
+            background: var(--secondary);
+        }
+
+        .gaming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gaming-card {
+            position: relative;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .gaming-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gaming-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-info i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero 3D Interactive Section -->
+    <section id="hero3d" class="hero"
+        style="height: 100vh; position: relative; background: linear-gradient(135deg, #2C3639, #3F4E4F); overflow: hidden;">
+        <canvas id="coffee-canvas"
+            style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1;"></canvas>
+        <div class="hero-content" style="text-align:center; position:relative; z-index:2; padding-top:20vh;">
+            <h1 style="font-size: 3.5rem; color: #A27B5C; animation: fadeInUp 1s ease;">أهلاً بك في عالم ليفيلز</h1>
+            <p style="font-size: 1.5rem; color: #DCD7C9; animation: fadeInUp 1s ease 0.3s;">قهوة × ألعاب × تجربة رقمية
+                لا تُنسى</p>
+            <a href="#menu" class="cta-button" style="animation: fadeInUp 1s ease 0.6s;">ابدأ تجربتك الآن</a>
+        </div>
+    </section>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#" class="logo">ليفيلز</a>
+        <div class="nav-links">
+            <a href="#menu">القائمة</a>
+            <a href="#gaming">منطقة الألعاب</a>
+            <a href="#breakfast">الإفطار</a>
+            <a href="#contact">اتصل بنا</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>مقهى ليفيلز</h1>
+            <p>قهوة متخصصة، منطقة ألعاب، وإفطار لذيذ</p>
+            <a href="#menu" class="cta-button">استكشف القائمة</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title" data-aos="fade-up">قائمة المشروبات</h2>
+        <div class="menu-container">
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="coffee">قهوة</button>
+                <button class="category-btn" data-category="tea">شاي</button>
+                <button class="category-btn" data-category="special">مشروبات خاصة</button>
+            </div>
+            <table class="menu-table" id="menu-table">
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>السعرات</th>
+                        <th>السعر الساخن (ريال)</th>
+                        <th>السعر البارد (ريال)</th>
+                    </tr>
+                </thead>
+                <tbody id="menu-body">
+                    <!-- Menu items will be dynamically populated -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Gaming Zone Section -->
+    <section id="gaming" class="gaming-zone">
+        <h2 class="section-title" data-aos="fade-up">منطقة الألعاب</h2>
+        <div class="gaming-grid">
+            <div class="gaming-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt="Gaming Station">
+                <div class="gaming-overlay">
+                    <h3>محطات الألعاب</h3>
+                    <p>أجهزة حديثة مع أحدث الألعاب</p>
+                </div>
+            </div>
+            <div class="gaming-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt="VR Gaming">
+                <div class="gaming-overlay">
+                    <h3>Virtual Reality Games</h3>
+                    <p>Immersive experience with the latest VR technology</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breakfast Section -->
+    <section id="breakfast" class="gaming-zone">
+        <h2 class="section-title" data-aos="fade-up">Breakfast Menu</h2>
+        <div class="gaming-grid" id="breakfast-grid">
+            <!-- Breakfast items will be dynamically populated -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" data-aos="fade-up">Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-info" data-aos="fade-up">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Our Location</h3>
+                <p>Riyadh, Saudi Arabia</p>
+            </div>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-clock"></i>
+                <h3>Working Hours</h3>
+                <p>Every day from 7 AM - 12 AM</p>
+            </div>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p>+966 XX XXX XXXX</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for product details -->
+    <div id="item-modal" class="menu-modal" style="display:none;">
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="">
+            <h3 id="modal-name"></h3>
+            <p id="modal-calories"></p>
+            <p id="modal-price"></p>
+            <button onclick="document.getElementById('item-modal').style.display='none'">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        function showItemModal(name, calories, price, image) {
+            document.getElementById('modal-name').textContent = name;
+            document.getElementById('modal-calories').textContent = `Calories: ${calories} kcal`;
+            document.getElementById('modal-price').textContent = `Price: ${price} SAR`;
+            document.getElementById('modal-image').src = image;
+            document.getElementById('item-modal').style.display = 'flex';
+        }
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Menu Data
+        const menuData = {
+            coffee: [
+                { name: 'Espresso', calories: 5, hotPrice: 12, coldPrice: 'N/A' },
+                { name: 'Americano', calories: 10, hotPrice: 14, coldPrice: 15 },
+                { name: 'Cappuccino', calories: 80, hotPrice: 16, coldPrice: 'N/A' },
+                { name: 'Flat White', calories: 100, hotPrice: 17, coldPrice: 'N/A' },
+                { name: 'Latte', calories: 120, hotPrice: 18, coldPrice: 19 },
+                { name: 'Spanish Latte', calories: 160, hotPrice: 18, coldPrice: 19 },
+                { name: 'Salted Caramel Latte', calories: 190, hotPrice: 19, coldPrice: 20 },
+                { name: 'Vanilla Latte', calories: 180, hotPrice: 19, coldPrice: 20 },
+                { name: 'Mocha', calories: 230, hotPrice: 19, coldPrice: 20 },
+                { name: 'White Mocha', calories: 250, hotPrice: 19, coldPrice: 20 },
+                { name: 'Matcha', calories: 150, hotPrice: 23, coldPrice: 24 },
+                { name: 'Levels Latte (Signature)', calories: 200, hotPrice: 24, coldPrice: 25 },
+                { name: 'Choco Latte', calories: 220, hotPrice: 22, coldPrice: 22 }
+            ],
+            tea: [
+                { name: 'Red Tea', calories: 0, hotPrice: 5, coldPrice: 'N/A' },
+                { name: 'Green Tea', calories: 0, hotPrice: 5, coldPrice: 'N/A' },
+                { name: 'Green Tea w/ Mint', calories: 5, hotPrice: 5, coldPrice: 'N/A' },
+                { name: 'Chamomile', calories: 0, hotPrice: 7, coldPrice: 'N/A' },
+                { name: 'Hibiscus', calories: 40, hotPrice: 'N/A', coldPrice: 18 }
+            ],
+            special: [
+                { name: 'V60 (Colombia/Ethiopia/Costa Rica)', calories: 5, hotPrice: 19, coldPrice: 19 },
+                { name: 'Mojito – All Flavors', calories: 120, hotPrice: 'N/A', coldPrice: 18 },
+                { name: 'Lemon Brazilian', calories: 90, hotPrice: 'N/A', coldPrice: 22 },
+                { name: 'Red Bull', calories: 110, hotPrice: 'N/A', coldPrice: 14 },
+                { name: 'Code Red', calories: 90, hotPrice: 'N/A', coldPrice: 7 },
+                { name: 'Sparkling Water', calories: 0, hotPrice: 'N/A', coldPrice: 7 },
+                { name: 'Still Water', calories: 0, hotPrice: 'N/A', coldPrice: 5 }
+            ]
+        };
+
+        const breakfastData = [
+            { name: 'English Breakfast', price: 45, image: 'https://images.unsplash.com/photo-1533920379810-6bedac961c2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' },
+            { name: 'Eggs Benedict', price: 38, image: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' },
+            { name: 'Avocado Toast', price: 32, image: 'https://images.unsplash.com/photo-1588137378633-dea1336ce1e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80' }
+        ];
+
+        // Populate Menu Items
+        function displayMenuItems(category) {
+            const menuBody = document.getElementById('menu-body');
+            const items = menuData[category];
+
+            menuBody.innerHTML = '';
+            items.forEach(item => {
+                const row = document.createElement('tr');
+                row.setAttribute('data-aos', 'fade-up');
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.calories}</td>
+                    <td>${item.hotPrice !== 'N/A' ? item.hotPrice : '-'}</td>
+                    <td>${item.coldPrice !== 'N/A' ? item.coldPrice : '-'}</td>
+                `;
+
+                row.addEventListener('click', () => {
+                    const placeholderImage = `https://source.unsplash.com/featured/?${encodeURIComponent(item.name)},drink`;
+                    const combinedPrice =
+                        `${item.hotPrice !== 'N/A' ? 'Hot: ' + item.hotPrice + ' SAR' : ''} 
+                         ${item.coldPrice !== 'N/A' ? '| Cold: ' + item.coldPrice + ' SAR' : ''}`;
+                    showItemModal(item.name, item.calories, combinedPrice, placeholderImage);
+                });
+
+                menuBody.appendChild(row);
+            });
+        }
+
+        // Populate Breakfast Items
+        function displayBreakfastItems() {
+            const breakfastGrid = document.getElementById('breakfast-grid');
+
+            breakfastData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'gaming-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index * 200).toString());
+
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="gaming-overlay">
+                        <h3>${item.name}</h3>
+                        <p>Price: ${item.price} SAR</p>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    showItemModal(item.name, 0, item.price, item.image);
+                });
+
+                breakfastGrid.appendChild(card);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            displayMenuItems('coffee');
+            displayBreakfastItems();
+
+            // Menu category buttons
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    displayMenuItems(btn.dataset.category);
+                });
+            });
+        });
+    </script>
+    </script>
+    <script>
+        const canvas = document.getElementById('coffee-canvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        let angle = 0;
+        function drawLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            angle += 0.01;
+            const radius = 80 + Math.sin(angle) * 20;
+            const x = canvas.width / 2;
+            const y = canvas.height / 2;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = `hsl(${angle * 50 % 360}, 70%, 60%)`;
+            ctx.fill();
+            requestAnimationFrame(drawLoop);
+        }
+        drawLoop();
+    </script>
+</body>
+
+</html>
