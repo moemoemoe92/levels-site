@@ -4,3 +4,7 @@ obj/
 bin/
 *.cache
 *.pdb
+obj/
+bin/
+*.cache
+*.pdb
