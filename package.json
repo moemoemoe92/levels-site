@@ -1,0 +1,119 @@
+{
+  "name": "levels-cafe-site",
+  "version": "2.0.0",
+  "description": "مقهى ليفيلز - موقع رسمي متطور مع تجربة 3D تفاعلية وتكامل AI",
+  "keywords": [
+    "cafe",
+    "coffee",
+    "gaming",
+    "3d",
+    "pwa",
+    "arabic",
+    "saudi",
+    "riyadh",
+    "three.js",
+    "grpc",
+    "anthropic"
+  ],
+  "author": {
+    "name": "Mohammed",
+    "url": "https://github.com/moemoemoe92"
+  },
+  "license": "MIT",
+  "homepage": "https://moemoemoe92.github.io/levels-site/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moemoemoe92/levels-site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moemoemoe92/levels-site/issues"
+  },
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "start:backend": "cd 3d/GrpcService1/GrpcService1 && dotnet run",
+    "build:backend": "cd 3d/GrpcService1/GrpcService1 && dotnet build",
+    "test:backend": "cd 3d/GrpcService1/GrpcService1 && dotnet test",
+    "dev": "npm run start",
+    "validate": "echo 'Validating HTML, CSS, and JS files...'",
+    "deploy": "gh-pages -d .",
+    "clean": "rm -rf node_modules package-lock.json"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "pwa": {
+    "name": "مقهى ليفيلز",
+    "short_name": "ليفيلز",
+    "theme_color": "#A27B5C",
+    "background_color": "#2C3639",
+    "display": "standalone"
+  },
+  "features": {
+    "frontend": [
+      "Progressive Web App (PWA)",
+      "3D Interactive Experience (Three.js)",
+      "Responsive Design",
+      "Dark Mode Support",
+      "Multi-language (AR/EN)",
+      "Accessibility (WCAG 2.1)",
+      "SEO Optimized",
+      "Performance Optimized"
+    ],
+    "backend": [
+      "gRPC Service (.NET 9.0)",
+      "Anthropic Claude AI Integration",
+      "Health Checks",
+      "Detailed Logging",
+      "Error Handling",
+      "CORS Support"
+    ],
+    "technologies": {
+      "frontend": [
+        "HTML5",
+        "CSS3 (Variables, Flexbox, Grid)",
+        "JavaScript (ES6+)",
+        "Three.js r128",
+        "Service Worker API",
+        "Cache API",
+        "Web App Manifest"
+      ],
+      "backend": [
+        ".NET 9.0",
+        "gRPC",
+        "C# 11",
+        "Anthropic SDK 5.5.1"
+      ],
+      "external": [
+        "Font Awesome 6.0.0",
+        "Google Fonts (Tajawal)",
+        "AOS 2.3.1",
+        "Unsplash Images"
+      ]
+    }
+  },
+  "architecture": {
+    "type": "Hybrid",
+    "frontend": "Static Site (JAMstack)",
+    "backend": "Microservices (gRPC)",
+    "hosting": {
+      "frontend": "GitHub Pages",
+      "backend": "Self-hosted / Cloud"
+    }
+  },
+  "metadata": {
+    "createdAt": "2024",
+    "updatedAt": "2024",
+    "status": "Active Development",
+    "stage": "Production",
+    "language": "Arabic (Primary), English (Secondary)"
+  }
+}

@@ -1,0 +1,368 @@
+/* ====================================
+   3D Interactive Experience Styles
+   تنسيقات التجربة التفاعلية ثلاثية الأبعاد
+   ==================================== */
+
+:root {
+    --primary: #2C3639;
+    --secondary: #3F4E4F;
+    --accent: #A27B5C;
+    --light: #DCD7C9;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--light);
+    position: relative;
+}
+
+/* Canvas Container */
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: move;
+}
+
+/* Information Overlay */
+#info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    z-index: 100;
+    background: rgba(44, 54, 57, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 300px;
+    animation: slideInRight 0.5s ease-out;
+}
+
+#info h1 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#info p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+#info .icon {
+    margin-left: 0.5rem;
+    color: var(--accent);
+}
+
+/* Controls Panel */
+#controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(44, 54, 57, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 0.5s ease-out;
+}
+
+#controls button {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#controls button:hover {
+    background: #8B6B4F;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#controls button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading Screen */
+#loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+
+#loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(220, 215, 201, 0.3);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+#loading p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--light);
+}
+
+/* Back Button */
+#back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: rgba(44, 54, 57, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--light);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    animation: slideInLeft 0.5s ease-out;
+}
+
+#back-button:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateX(-5px);
+}
+
+#back-button i {
+    margin-left: 0.5rem;
+}
+
+/* Stats Panel */
+#stats {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    background: rgba(44, 54, 57, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    animation: slideInLeft 0.5s ease-out;
+}
+
+#stats .stat-item {
+    margin: 0.25rem 0;
+    color: var(--light);
+}
+
+#stats .stat-value {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Animations */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #info {
+        top: 10px;
+        right: 10px;
+        padding: 1rem;
+        max-width: 250px;
+    }
+
+    #info h1 {
+        font-size: 1.2rem;
+    }
+
+    #info p {
+        font-size: 0.9rem;
+    }
+
+    #controls {
+        bottom: 10px;
+        right: 10px;
+        padding: 0.75rem;
+    }
+
+    #controls button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        margin: 0.25rem;
+    }
+
+    #back-button {
+        top: 10px;
+        left: 10px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    #stats {
+        bottom: 10px;
+        left: 10px;
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #info {
+        max-width: 200px;
+        padding: 0.75rem;
+    }
+
+    #info h1 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #info p {
+        font-size: 0.8rem;
+        margin: 0.25rem 0;
+    }
+
+    #controls {
+        width: calc(100% - 20px);
+        right: 10px;
+        left: 10px;
+        text-align: center;
+    }
+
+    #controls button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    #stats {
+        display: none; /* Hide on very small screens */
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    #info,
+    #controls,
+    #back-button,
+    #stats {
+        background: rgba(0, 0, 0, 0.95);
+        border: 2px solid var(--accent);
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1a2022, #2C3639);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

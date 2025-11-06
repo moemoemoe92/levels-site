@@ -1,0 +1,128 @@
+{
+  "name": "مقهى ليفيلز - Levels Café",
+  "short_name": "ليفيلز",
+  "description": "مقهى متخصص يقدم أفضل أنواع القهوة وألعاب البلايستيشن والواقع الافتراضي في الرياض",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2C3639",
+  "theme_color": "#A27B5C",
+  "orientation": "portrait-primary",
+  "lang": "ar",
+  "dir": "rtl",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/assets/images/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "food",
+    "entertainment",
+    "lifestyle"
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "الصفحة الرئيسية"
+    },
+    {
+      "src": "/assets/images/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "قائمة المشروبات"
+    },
+    {
+      "src": "/assets/images/screenshot3.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "منطقة الألعاب"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "القائمة",
+      "short_name": "القائمة",
+      "description": "اطلع على قائمة المشروبات والطعام",
+      "url": "/#menu",
+      "icons": [
+        {
+          "src": "/assets/images/menu-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "منطقة الألعاب",
+      "short_name": "الألعاب",
+      "description": "تعرف على منطقة الألعاب",
+      "url": "/#gaming",
+      "icons": [
+        {
+          "src": "/assets/images/gaming-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "تجربة 3D",
+      "short_name": "3D",
+      "description": "استمتع بالتجربة التفاعلية ثلاثية الأبعاد",
+      "url": "/3d/",
+      "icons": [
+        {
+          "src": "/assets/images/3d-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

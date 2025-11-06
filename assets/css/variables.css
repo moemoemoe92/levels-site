@@ -1,0 +1,122 @@
+/* ====================================
+   Design System - CSS Variables
+   مقهى ليفيلز - نظام التصميم
+   ==================================== */
+
+:root {
+    /* Primary Colors - الألوان الأساسية */
+    --color-primary: #2C3639;
+    --color-secondary: #3F4E4F;
+    --color-accent: #A27B5C;
+    --color-light: #DCD7C9;
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* Extended Color Palette - لوحة ألوان موسعة */
+    --color-accent-light: #C29A7A;
+    --color-accent-dark: #8B6B4F;
+    --color-primary-light: #3d4e52;
+    --color-primary-dark: #1a2022;
+
+    /* Typography - الخطوط */
+    --font-primary: 'Tajawal', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Font Sizes - أحجام الخطوط */
+    --font-size-xs: 0.75rem;      /* 12px */
+    --font-size-sm: 0.875rem;     /* 14px */
+    --font-size-base: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;     /* 18px */
+    --font-size-xl: 1.25rem;      /* 20px */
+    --font-size-2xl: 1.5rem;      /* 24px */
+    --font-size-3xl: 1.875rem;    /* 30px */
+    --font-size-4xl: 2.25rem;     /* 36px */
+    --font-size-5xl: 3rem;        /* 48px */
+    --font-size-6xl: 3.75rem;     /* 60px */
+    --font-size-7xl: 4.5rem;      /* 72px */
+
+    /* Spacing - المسافات */
+    --spacing-xs: 0.25rem;    /* 4px */
+    --spacing-sm: 0.5rem;     /* 8px */
+    --spacing-md: 1rem;       /* 16px */
+    --spacing-lg: 1.5rem;     /* 24px */
+    --spacing-xl: 2rem;       /* 32px */
+    --spacing-2xl: 3rem;      /* 48px */
+    --spacing-3xl: 4rem;      /* 64px */
+    --spacing-4xl: 5rem;      /* 80px */
+    --spacing-5xl: 6rem;      /* 96px */
+
+    /* Border Radius - استدارة الحواف */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Shadows - الظلال */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Transitions - التحولات */
+    --transition-fast: 150ms ease-in-out;
+    --transition-base: 300ms ease-in-out;
+    --transition-slow: 500ms ease-in-out;
+
+    /* Z-Index Layers - طبقات العمق */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+
+    /* Breakpoints - نقاط التوقف */
+    --breakpoint-xs: 375px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+
+    /* Layout - التخطيط */
+    --container-max-width: 1280px;
+    --navbar-height: 70px;
+    --section-padding: 5rem 5%;
+
+    /* Animation Duration - مدة الرسوم المتحركة */
+    --animation-duration-fast: 200ms;
+    --animation-duration-base: 400ms;
+    --animation-duration-slow: 600ms;
+    --animation-duration-slower: 1000ms;
+
+    /* Effects - التأثيرات */
+    --backdrop-blur: 10px;
+    --backdrop-opacity: 0.95;
+}
+
+/* Dark Mode Support - دعم الوضع الداكن */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #1a2022;
+        --color-secondary: #2C3639;
+    }
+}
+
+/* Reduced Motion Support - دعم تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast: 0ms;
+        --transition-base: 0ms;
+        --transition-slow: 0ms;
+        --animation-duration-fast: 0ms;
+        --animation-duration-base: 0ms;
+        --animation-duration-slow: 0ms;
+        --animation-duration-slower: 0ms;
+    }
+}

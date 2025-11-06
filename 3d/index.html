@@ -1,128 +1,96 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Interactive - مقهى ليفيلز</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO -->
+    <title>تجربة 3D تفاعلية - مقهى ليفيلز | Interactive 3D Experience</title>
+    <meta name="description" content="استمتع بتجربة تفاعلية ثلاثية الأبعاد لكوب القهوة من مقهى ليفيلز. تقنية Three.js المتطورة.">
+    <meta name="keywords" content="3D, Three.js, تجربة تفاعلية, قهوة, ليفيلز">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, #2C3639, #3F4E4F);
-            color: #DCD7C9;
-            overflow: hidden;
-        }
-        #info {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            text-align: right;
-            z-index: 100;
-        }
-        #info h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: #A27B5C;
-        }
-        #info p {
-            margin: 5px 0;
-        }
-        canvas {
-            display: block;
-        }
-    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#A27B5C">
 </head>
 <body>
-    <div id="info">
-        <h1>تجربة 3D تفاعلية</h1>
-        <p>حرك الفأرة لتدوير الكوب</p>
-        <p>استخدم العجلة للتكبير والتصغير</p>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
     </div>
 
+    <!-- Back Button -->
+    <a href="../index.html" id="back-button">
+        <i class="fas fa-arrow-left"></i>
+        العودة للرئيسية
+    </a>
+
+    <!-- Information Panel -->
+    <div id="info">
+        <h1>
+            <i class="fas fa-cube icon" aria-hidden="true"></i>
+            تجربة 3D تفاعلية
+        </h1>
+        <p>
+            <i class="fas fa-mouse icon" aria-hidden="true"></i>
+            حرك الفأرة لتدوير الكوب
+        </p>
+        <p>
+            <i class="fas fa-circle-notch icon" aria-hidden="true"></i>
+            استخدم العجلة للتكبير والتصغير
+        </p>
+        <p>
+            <i class="fas fa-hand-pointer icon" aria-hidden="true"></i>
+            انقر واسحب على الشاشات اللمسية
+        </p>
+    </div>
+
+    <!-- Controls Panel -->
+    <div id="controls">
+        <button id="pause-btn" aria-label="Pause Animation">
+            <i class="fas fa-pause"></i>
+            إيقاف مؤقت
+        </button>
+        <button id="reset-btn" aria-label="Reset Camera">
+            <i class="fas fa-redo"></i>
+            إعادة تعيين
+        </button>
+        <button id="wireframe-btn" aria-label="Toggle Wireframe">
+            <i class="fas fa-project-diagram"></i>
+            إطار سلكي
+        </button>
+    </div>
+
+    <!-- Stats Panel -->
+    <div id="stats">
+        <div class="stat-item">FPS: <span class="stat-value">60</span></div>
+        <div class="stat-item">Vertices: <span class="stat-value">0</span></div>
+        <div class="stat-item">Camera Z: <span class="stat-value">5.00</span></div>
+    </div>
+
+    <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        let scene, camera, renderer, cup;
 
-        function init() {
-            // Scene
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x2C3639);
-
-            // Camera
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 5;
-
-            // Renderer
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
-
-            // Lighting
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-            scene.add(ambientLight);
-
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight.position.set(1, 1, 1);
-            scene.add(directionalLight);
-
-            // Coffee Cup
-            createCoffeeCup();
-
-            // Controls
-            window.addEventListener('resize', onWindowResize, false);
-            document.addEventListener('mousemove', onMouseMove, false);
-            document.addEventListener('wheel', onMouseWheel, false);
-
-            animate();
-        }
-
-        function createCoffeeCup() {
-            // Cup body (cylinder)
-            const cupGeometry = new THREE.CylinderGeometry(1, 0.8, 2, 32);
-            const cupMaterial = new THREE.MeshLambertMaterial({ color: 0x8B4513 });
-            const cupBody = new THREE.Mesh(cupGeometry, cupMaterial);
-            cupBody.position.y = 0;
-
-            // Cup handle (torus)
-            const handleGeometry = new THREE.TorusGeometry(0.3, 0.1, 16, 100, Math.PI);
-            const handleMaterial = new THREE.MeshLambertMaterial({ color: 0x654321 });
-            const handle = new THREE.Mesh(handleGeometry, handleMaterial);
-            handle.position.set(1.2, 0, 0);
-            handle.rotation.z = Math.PI / 2;
-
-            // Group them
-            cup = new THREE.Group();
-            cup.add(cupBody);
-            cup.add(handle);
-            scene.add(cup);
-        }
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        function onMouseMove(event) {
-            const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-            const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-            cup.rotation.y = mouseX * Math.PI / 4;
-            cup.rotation.x = mouseY * Math.PI / 8;
-        }
-
-        function onMouseWheel(event) {
-            camera.position.z += event.deltaY * 0.01;
-            camera.position.z = Math.max(2, Math.min(10, camera.position.z));
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            cup.rotation.y += 0.005;
-            renderer.render(scene, camera);
-        }
-
-        init();
-    </script>
+    <!-- Scene Script -->
+    <script src="js/scene.js"></script>
 </body>
 </html>
